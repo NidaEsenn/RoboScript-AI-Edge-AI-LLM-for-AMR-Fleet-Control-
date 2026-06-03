@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+data/processed/
+
+# Local-only assistant guidance — not pushed
+CLAUDE.md
+CLAUDE-2.md

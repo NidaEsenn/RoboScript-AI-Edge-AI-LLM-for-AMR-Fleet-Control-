@@ -1,0 +1,182 @@
+[
+  {
+    "category_id": 1,
+    "scenario": {"yolo": {"cls": "pallet", "bbox_xywh": [300, 220, 120, 140], "confidence": 0.88}, "lidar": {"min_distance_meters": 0.45, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 1.1, "battery_level_pct": 64, "active_fault_codes": []}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Static pallet at 0.45m, inside stopping distance. Halting before reroute can be planned.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_2", "zone_update": "TEMPORARY_BLOCKAGE_ZONE_A4", "request_human_audit": false}}
+  },
+  {
+    "category_id": 1,
+    "scenario": {"yolo": {"cls": "box", "bbox_xywh": [260, 200, 90, 100], "confidence": 0.81}, "lidar": {"min_distance_meters": 0.55, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 0.9, "battery_level_pct": 70, "active_fault_codes": []}},
+    "response": {"decision": "DYNAMIC_REROUTE", "reasoning": "Box obstructing lane at 0.55m; clear alternate path available, delegating to Nav2 replanner.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 12.5, "y": 8.3, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_w_replanning_and_recovery.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "zone_update": "ROUTE_MODIFIED_SECTOR_B", "request_human_audit": false}}
+  },
+  {
+    "category_id": 1,
+    "scenario": {"yolo": {"cls": "pallet", "bbox_xywh": [340, 240, 110, 130], "confidence": 0.9}, "lidar": {"min_distance_meters": 0.58, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 1.0, "battery_level_pct": 58, "active_fault_codes": []}},
+    "response": {"decision": "DYNAMIC_REROUTE", "reasoning": "Stacked pallet blocks direct lane; rerouting via adjacent aisle through Nav2.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 9.2, "y": 14.7, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_w_replanning_and_recovery.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "zone_update": "ROUTE_MODIFIED_AISLE_3", "request_human_audit": false}}
+  },
+  {
+    "category_id": 2,
+    "scenario": {"yolo": {"cls": "person", "bbox_xywh": [320, 240, 80, 180], "confidence": 0.92}, "lidar": {"min_distance_meters": 0.38, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 1.2, "battery_level_pct": 72, "active_fault_codes": []}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Person detected within 0.38m at 0.92 confidence. Mandatory halt, no auto-recovery.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_3", "request_human_audit": true}}
+  },
+  {
+    "category_id": 2,
+    "scenario": {"yolo": {"cls": "forklift", "bbox_xywh": [180, 160, 220, 240], "confidence": 0.86}, "lidar": {"min_distance_meters": 0.72, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 0.8, "battery_level_pct": 55, "active_fault_codes": []}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Moving forklift detected at 0.86 confidence in path. Mandatory halt until operator clears.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_3", "request_human_audit": true}}
+  },
+  {
+    "category_id": 2,
+    "scenario": {"yolo": {"cls": "person", "bbox_xywh": [400, 260, 70, 170], "confidence": 0.95}, "lidar": {"min_distance_meters": 1.1, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 1.4, "battery_level_pct": 80, "active_fault_codes": []}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Pedestrian at 0.95 confidence crossing path. Immediate mandatory halt regardless of distance.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_3", "request_human_audit": true}}
+  },
+  {
+    "category_id": 3,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 0.0, "status": "SENSOR_FAULT"}, "telemetry": {"current_speed_mps": 1.0, "battery_level_pct": 61, "active_fault_codes": ["ERR_LIDAR_NODATA"]}},
+    "response": {"decision": "HALT_AND_REPORT", "reasoning": "LiDAR returning 0.0m readings (sensor fault). Cannot trust obstacle data, halting and reporting.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_2", "request_human_audit": true}}
+  },
+  {
+    "category_id": 3,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 0.0, "status": "SENSOR_FAULT"}, "telemetry": {"current_speed_mps": 0.0, "battery_level_pct": 49, "active_fault_codes": ["ERR_LIDAR_NAN"]}},
+    "response": {"decision": "HALT_AND_REPORT", "reasoning": "LiDAR NaN values detected while stationary. Logging fault and holding position pending diagnostics.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_2", "zone_update": "SENSOR_FAULT_HOLD", "request_human_audit": true}}
+  },
+  {
+    "category_id": 3,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 0.0, "status": "SENSOR_FAULT"}, "telemetry": {"current_speed_mps": 1.3, "battery_level_pct": 66, "active_fault_codes": ["ERR_LIDAR_NODATA"]}},
+    "response": {"decision": "HALT_AND_REPORT", "reasoning": "Primary LiDAR offline at 1.3 m/s. Halting immediately and flagging for maintenance audit.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_2", "request_human_audit": true}}
+  },
+  {
+    "category_id": 4,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 3.2, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.0, "battery_level_pct": 12, "active_fault_codes": ["ERR_BATTERY_CRITICAL"]}},
+    "response": {"decision": "NAVIGATE_TO_CHARGING_DOCK", "reasoning": "Battery critical at 12%. Routing to nearest charging dock via Nav2 before depletion.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 2.0, "y": 1.5, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_to_dock.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "zone_update": "RETURNING_TO_DOCK_C1", "request_human_audit": false}}
+  },
+  {
+    "category_id": 4,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 5.0, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 0.7, "battery_level_pct": 9, "active_fault_codes": ["ERR_BATTERY_CRITICAL"]}},
+    "response": {"decision": "NAVIGATE_TO_CHARGING_DOCK", "reasoning": "Battery at 9%, below safe operating margin. Immediate navigation to charging dock C2.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 4.5, "y": 0.8, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_to_dock.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "zone_update": "RETURNING_TO_DOCK_C2", "request_human_audit": false}}
+  },
+  {
+    "category_id": 4,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 2.8, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.1, "battery_level_pct": 14, "active_fault_codes": ["ERR_BATTERY_CRITICAL"]}},
+    "response": {"decision": "NAVIGATE_TO_CHARGING_DOCK", "reasoning": "Battery 14% and dropping under load. Abandoning task, rerouting to dock to avoid stranding.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 1.2, "y": 6.4, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_to_dock.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "zone_update": "RETURNING_TO_DOCK_C3", "request_human_audit": false}}
+  },
+  {
+    "category_id": 5,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 4.1, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.2, "battery_level_pct": 22, "active_fault_codes": ["ERR_BATTERY_LOW"]}},
+    "response": {"decision": "CONTINUE_WITH_FAULT_LOG", "reasoning": "Battery at 22%, above critical. Completing current task and flagging for priority recharge.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_0", "request_human_audit": false}}
+  },
+  {
+    "category_id": 5,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 6.0, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 0.9, "battery_level_pct": 18, "active_fault_codes": ["ERR_BATTERY_LOW"]}},
+    "response": {"decision": "CONTINUE_WITH_FAULT_LOG", "reasoning": "Battery 18%. Within margin to finish nearby task; logging low-battery warning for dispatch.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_0", "zone_update": "PRIORITY_RECHARGE_QUEUED", "request_human_audit": false}}
+  },
+  {
+    "category_id": 5,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 3.5, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.0, "battery_level_pct": 16, "active_fault_codes": ["ERR_BATTERY_LOW"]}},
+    "response": {"decision": "CONTINUE_WITH_FAULT_LOG", "reasoning": "Battery 16%, near lower bound. Finishing task then queuing dock return; logging fault.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_0", "request_human_audit": false}}
+  },
+  {
+    "category_id": 6,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 4.0, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.1, "battery_level_pct": 60, "active_fault_codes": ["ERR_MOTOR_OVERHEAT_L", "temp_c=92"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Left motor at 92C, above 85C limit. Halting to prevent thermal damage before cooldown.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_2", "request_human_audit": true}}
+  },
+  {
+    "category_id": 6,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 5.5, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 0.6, "battery_level_pct": 71, "active_fault_codes": ["ERR_MOTOR_OVERHEAT_R", "temp_c=88"]}},
+    "response": {"decision": "THERMAL_COOLDOWN", "reasoning": "Right motor 88C, marginally over limit. Logging fault and reducing duty for passive cooldown.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_1", "request_human_audit": false}}
+  },
+  {
+    "category_id": 6,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 3.9, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.3, "battery_level_pct": 54, "active_fault_codes": ["ERR_MOTOR_OVERHEAT_L", "temp_c=97"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Motor temperature 97C, severe overheat. Immediate halt required to avoid winding failure.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_2", "request_human_audit": true}}
+  },
+  {
+    "category_id": 7,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 4.8, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.2, "battery_level_pct": 63, "active_fault_codes": ["ERR_WHEEL_SLIP_LOW"]}},
+    "response": {"decision": "REDUCE_SPEED", "reasoning": "Minor wheel slip with clear path. Reducing speed and continuing toward goal via Nav2.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 18.0, "y": 3.0, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_w_speed_limit.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_0", "request_human_audit": false}}
+  },
+  {
+    "category_id": 7,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 7.0, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 0.8, "battery_level_pct": 77, "active_fault_codes": ["ERR_WHEEL_SLIP_LOW"]}},
+    "response": {"decision": "CONTINUE", "reasoning": "Intermittent low wheel slip, no obstruction. Logging and continuing at current speed.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_0", "request_human_audit": false}}
+  },
+  {
+    "category_id": 7,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 5.2, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.0, "battery_level_pct": 68, "active_fault_codes": ["ERR_WHEEL_SLIP_LOW"]}},
+    "response": {"decision": "REDUCE_SPEED", "reasoning": "Low traction event detected. Throttling speed for stability and proceeding via Nav2.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 11.0, "y": 9.5, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_w_speed_limit.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_0", "request_human_audit": false}}
+  },
+  {
+    "category_id": 8,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 4.6, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.3, "battery_level_pct": 59, "active_fault_codes": ["ERR_WHEEL_SLIP_HIGH", "floor=WET"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "High wheel slip on wet floor. Traction unsafe at speed; halting to prevent skid collision.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_2", "zone_update": "WET_FLOOR_ZONE_D2", "request_human_audit": false}}
+  },
+  {
+    "category_id": 8,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 6.3, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.0, "battery_level_pct": 73, "active_fault_codes": ["ERR_WHEEL_SLIP_HIGH", "floor=WET"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Severe slip detected on wet surface. Halting immediately until floor condition is cleared.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_2", "zone_update": "WET_FLOOR_ZONE_A1", "request_human_audit": false}}
+  },
+  {
+    "category_id": 8,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 5.0, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.5, "battery_level_pct": 50, "active_fault_codes": ["ERR_WHEEL_SLIP_HIGH", "floor=WET"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Loss of traction at 1.5 m/s on wet floor. Emergency halt to regain control safely.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_2", "zone_update": "WET_FLOOR_ZONE_B3", "request_human_audit": false}}
+  },
+  {
+    "category_id": 9,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 4.4, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.0, "battery_level_pct": 62, "active_fault_codes": ["ERR_ENCODER_DRIFT", "localization=0.31"]}},
+    "response": {"decision": "HALT_AND_RELOCALIZE", "reasoning": "Encoder drift with localization confidence 0.31. Halting to relocalize before continuing.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "request_human_audit": false}}
+  },
+  {
+    "category_id": 9,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 5.7, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 0.0, "battery_level_pct": 80, "active_fault_codes": ["ERR_ENCODER_DRIFT", "localization=0.25"]}},
+    "response": {"decision": "HALT_AND_RELOCALIZE", "reasoning": "Localization at 0.25 while stationary. Logging fault and holding for relocalization routine.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_1", "request_human_audit": false}}
+  },
+  {
+    "category_id": 9,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 4.9, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.2, "battery_level_pct": 57, "active_fault_codes": ["ERR_ENCODER_DRIFT", "localization=0.18"]}},
+    "response": {"decision": "HALT_AND_RELOCALIZE", "reasoning": "Severe odometry drift, localization 0.18. Position unreliable; halting to re-establish pose.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "request_human_audit": true}}
+  },
+  {
+    "category_id": 10,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 2.0, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.0, "battery_level_pct": 65, "active_fault_codes": ["ERR_ESTOP_TRIGGERED"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "ESTOP triggered. Mandatory full halt, no auto-recovery permitted until manual reset.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_3", "request_human_audit": true}}
+  },
+  {
+    "category_id": 10,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 8.0, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 0.5, "battery_level_pct": 90, "active_fault_codes": ["ERR_ESTOP_TRIGGERED"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Emergency stop asserted despite clear path. Halting unconditionally; awaiting human reset.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_3", "request_human_audit": true}}
+  },
+  {
+    "category_id": 10,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 3.3, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.4, "battery_level_pct": 47, "active_fault_codes": ["ERR_ESTOP_TRIGGERED"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "ESTOP active at 1.4 m/s. Immediate mandatory halt; recovery blocked pending operator audit.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_3", "request_human_audit": true}}
+  },
+  {
+    "category_id": 11,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 0.2, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 0.0, "battery_level_pct": 53, "active_fault_codes": ["ERR_COLLISION_DETECTED", "imu_spike=4.2g"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Collision detected with 4.2g IMU spike. Halting to prevent further impact damage.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_3", "request_human_audit": true}}
+  },
+  {
+    "category_id": 11,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 0.5, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 0.0, "battery_level_pct": 60, "active_fault_codes": ["ERR_COLLISION_DETECTED", "imu_spike=3.1g"]}},
+    "response": {"decision": "DAMAGE_ASSESSMENT", "reasoning": "Minor collision logged with 3.1g spike. Holding for damage assessment before any motion.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_2", "request_human_audit": true}}
+  },
+  {
+    "category_id": 11,
+    "scenario": {"yolo": null, "lidar": {"min_distance_meters": 0.3, "status": "PATH_OBSTRUCTED"}, "telemetry": {"current_speed_mps": 0.2, "battery_level_pct": 44, "active_fault_codes": ["ERR_COLLISION_DETECTED", "imu_spike=5.0g"]}},
+    "response": {"decision": "EMERGENCY_HALT", "reasoning": "Hard collision, 5.0g spike. Emergency halt and full stop pending structural inspection.", "payload_type": "CMD_VEL_DIRECT", "ros2": {"topic": "/cmd_vel", "msg_type": "geometry_msgs/msg/Twist", "cmd_vel": {"linear": {"x": 0.0, "y": 0.0, "z": 0.0}, "angular": {"x": 0.0, "y": 0.0, "z": 0.0}}}, "aws_telemetry": {"incident_severity": "LEVEL_3", "request_human_audit": true}}
+  },
+  {
+    "category_id": 12,
+    "scenario": {"yolo": {"cls": "unknown", "bbox_xywh": [0, 0, 0, 0], "confidence": 0.21}, "lidar": {"min_distance_meters": 5.5, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.1, "battery_level_pct": 69, "active_fault_codes": ["ERR_CAMERA_DEGRADED"]}},
+    "response": {"decision": "REDUCE_SPEED", "reasoning": "All YOLO detections below 0.3 confidence. Reducing speed and proceeding on LiDAR via Nav2.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 7.5, "y": 12.0, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_w_speed_limit.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "request_human_audit": false}}
+  },
+  {
+    "category_id": 12,
+    "scenario": {"yolo": {"cls": "unknown", "bbox_xywh": [10, 10, 5, 5], "confidence": 0.15}, "lidar": {"min_distance_meters": 6.8, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 0.9, "battery_level_pct": 75, "active_fault_codes": ["ERR_CAMERA_DEGRADED"]}},
+    "response": {"decision": "LIDAR_ONLY_MODE", "reasoning": "Camera confidence 0.15, unreliable vision. Switching to LiDAR-only mode and logging fault.", "payload_type": "FAULT_REPORT_ONLY", "ros2": null, "aws_telemetry": {"incident_severity": "LEVEL_1", "request_human_audit": false}}
+  },
+  {
+    "category_id": 12,
+    "scenario": {"yolo": {"cls": "unknown", "bbox_xywh": [0, 0, 0, 0], "confidence": 0.28}, "lidar": {"min_distance_meters": 4.2, "status": "CLEAR"}, "telemetry": {"current_speed_mps": 1.2, "battery_level_pct": 66, "active_fault_codes": ["ERR_CAMERA_DEGRADED"]}},
+    "response": {"decision": "REDUCE_SPEED", "reasoning": "Vision confidence under 0.3 threshold. Slowing and relying on LiDAR while routing to goal.", "payload_type": "NAV2_ACTION", "ros2": {"action_server": "/navigate_to_pose", "action_type": "nav2_msgs/action/NavigateToPose", "goal": {"pose": {"header": {"frame_id": "map"}, "position": {"x": 13.3, "y": 5.1, "z": 0.0}, "orientation": {"w": 1.0}}, "behavior_tree": "navigate_w_speed_limit.xml"}}, "aws_telemetry": {"incident_severity": "LEVEL_1", "request_human_audit": false}}
+  }
+]
