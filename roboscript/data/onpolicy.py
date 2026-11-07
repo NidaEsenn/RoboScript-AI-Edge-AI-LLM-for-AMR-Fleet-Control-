@@ -46,6 +46,7 @@ def sample(model, tok, scenarios: list[dict], k: int, temperature: float, batch_
         texts = tok.batch_decode(g, skip_special_tokens=True)
         for j, s in enumerate(batch):
             out.append((s, texts[j * k:(j + 1) * k]))
+        print(f"  sampled {min(i + batch_size, len(scenarios))}/{len(scenarios)} prompts", flush=True)
     return out
 
 
