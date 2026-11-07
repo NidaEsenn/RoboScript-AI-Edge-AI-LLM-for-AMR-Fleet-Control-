@@ -1,138 +1,136 @@
 # RoboScript AI — Edge-AI LLM for AMR Fleet Control
 
-A domain-specific LLM pipeline that turns Amazon-style **Autonomous Mobile Robot (AMR)** sensor telemetry into a single, schema-validated **ROS 2 action payload** — with safety as a hard constraint, not an afterthought.
-
-Given a fault scenario (LiDAR distance, YOLO detections, fleet telemetry, fault codes), the model decides the safest action and emits **valid JSON** that a ROS 2 bridge can dispatch directly — halt, reroute, return-to-dock, or log-only.
-
-It's LLM postraning-MLOPS project
-
----
-
-## Why this project
-
-Warehouse AMRs must respond to faults (person in path, e-stop, motor overheat, low battery) in **milliseconds** and **never** make an unsafe move. A general LLM produces free-form text; a fleet controller needs **deterministic, schema-valid, safety-first** output. RoboScript fine-tunes a small model to do exactly that, then aligns it for safety and distills it for edge deployment.
-
----
-
-## Safety invariants (non-negotiable)
-
-These hold throughout the pipeline — enforced by Pydantic validation and a deterministic rule-check:
-
-- A payload is **exactly one** of `CMD_VEL_DIRECT` / `NAV2_ACTION` / `FAULT_REPORT_ONLY` — `cmd_vel` and `NavigateToPose` never co-occur.
-- `EMERGENCY_HALT` **always** commands zero velocity (`linear.x = 0.0`, `angular.z = 0.0`).
-- Any output that fails schema validation is **discarded / replaced by an emergency-halt fallback** — never forwarded to ROS 2.
-- The two life-safety categories — **person/forklift in path** and **e-stop** — must always `EMERGENCY_HALT`.
-
----
-
-## Fault taxonomy (12 categories)
-
-| # | Category | Key signal | Payload |
-|---|----------|-----------|---------|
-| 1 | Path obstruction (static) | LiDAR < 0.6 m, pallet/box | A or B |
-| 2 | Path obstruction (person/forklift) | YOLO person/forklift > 0.8 | **A only (mandatory halt)** |
-| 3 | LiDAR sensor fault | readings 0.0 / NaN | A + C |
-| 4 | Battery critical (< 15%) | battery_pct < 15 | B |
-| 5 | Battery low (15–25%) | battery_pct 15–25 | C or B |
-| 6 | Motor overheating | temp_c > 85 | A + C |
-| 7 | Wheel slip (low) | no obstruction | B slow / C |
-| 8 | Wheel slip (high) | wet floor | A |
-| 9 | Odometry / encoder fault | localization < 0.4 | A + C |
-| 10 | Emergency stop | `ERR_ESTOP_TRIGGERED` | **A only (mandatory halt)** |
-| 11 | Collision detected | IMU spike | A + C |
-| 12 | YOLO / camera failure | confidence < 0.3 | B slow + C |
-
-Payloads: **A** = `CMD_VEL_DIRECT` (direct halt), **B** = `NAV2_ACTION` (reroute / dock), **C** = `FAULT_REPORT_ONLY` (log).
-
----
-
-## Pipeline overview
+A domain-specific LLM post-training + MLOps pipeline that turns Autonomous Mobile Robot
+(AMR) sensor telemetry (LiDAR distance, YOLO detections, fleet telemetry, fault codes)
+into a single, schema-validated **ROS 2 action payload** — halt, reroute, return-to-dock,
+or log-only — with safety enforced by deterministic layers around the model, not only by
+the model.
 
 ```
- telemetry scenarios
-        │
-        ▼
- [ Session A ] synthetic generation ──► validate (Pydantic) ──► LLM-as-judge ──► DPO pairs
-        │
-        ▼
- [ Session B ] chat format ──► loss masking ──► MinHash dedup ──► 80/10/10 split
-        │
-        ▼
-   QLoRA SFT ──► DPO safety alignment ──► eval ──► distill (Phi-3) ──► vLLM/FastAPI ──► ROS 2 bridge
+ telemetry ─▶ synthetic / procedural data ─▶ validate ─▶ judge ─▶ SFT pairs + hard-negative DPO pairs
+                                                                  │
+                    chat format + loss mask + MinHash dedup + stratified split (leak-free DPO)
+                                                                  │
+               SFT (QLoRA on GPU / full FT on CPU) ─▶ on-policy negative mining ─▶ DPO (LoRA)
+                                                                  │
+                    logit / sequence-level distillation ─▶ edge model     evaluation report
+                                                                  │
+   FastAPI ─ deadline ─ Pydantic fallback ─ safety interlock ─▶ ROS 2 bridge ─▶ /cmd_vel · Nav2 · /fault_events
 ```
 
----
+## Status
 
-## Components
+All seven PRD sessions (A–G) are implemented. The full pipeline runs end-to-end on a CPU
+with **no API keys and no model downloads** (`local` profile). The `gpu` profile holds
+the PRD configuration (Llama-3.1-8B QLoRA → Phi-3-mini) and uses the same code paths,
+but it has not been run here because no GPU or Hub access was available.
 
-### Synthetic data generation
-- **`roboscript/data/synthetic.py`** — multi-provider generation (**Gemini / Groq / OpenAI**, swappable via one env var; all driven through the OpenAI-compatible API). Every output is validated against the `RoboResponse` Pydantic schema (**invalid examples discarded, never patched**), quality-filtered with an **LLM-as-judge**, and paired into **DPO** (safe `chosen` vs. unsafe `rejected`) examples. Includes per-day/per-minute rate-limit handling and `max_tokens` budgeting.
-- **`roboscript/data/offline.py`** — zero-API dataset builder from hand-authored seeds, using a **deterministic rule-check** in place of the LLM judge. Produces a balanced 12-category set with no external dependencies.
+| Stage | Module | Runs locally | Notes |
+|---|---|---|---|
+| A. Data generation | `data/synthetic.py`, `data/offline.py`, **`data/procedural.py`** | yes (procedural/offline) | LLM generation needs an API key |
+| Hard negatives | **`data/negatives.py`**, **`data/onpolicy.py`** | yes | replaces the single fixed "rejected" answer |
+| B. Dataset prep | `data/pipeline.py` | yes | model-agnostic; stratified; DPO split by prompt |
+| B. SFT | **`training/sft_trainer.py`** | yes (tiny model) | `--profile gpu` = QLoRA r16 / NF4 |
+| C. DPO | **`training/dpo_trainer.py`** | yes | fresh LoRA on the SFT model; AC-04 margin checks |
+| D. Evaluation | **`eval/evaluator.py`**, **`eval/golden.py`** | yes | test split + 50-case safety set + compound stress set |
+| E. Distillation | **`distillation/distill.py`** | yes | masked token-KL; falls back to sequence-level KD across tokenizers |
+| E. Serving | **`serve/api.py`**, **`serve/backends.py`**, **`serve/vllm_server.py`** | yes (rules/local backend) | vLLM backend needs a GPU |
+| F. ROS 2 bridge | **`ros2_bridge/`** | yes (in-process bus) | real `rclpy` transport in `docker/Dockerfile.ros2` |
+| G. Deploy | **`deploy/`**, `docker/`, `docker-compose.yml` | dry-run only | needs AWS credentials |
 
-### Dataset preparation
-- **`roboscript/data/pipeline.py`** — converts examples to **LLaMA-3 chat format**, applies **loss masking** (`labels = -100` on system/user tokens so only the assistant response is scored), **MinHash deduplication** (threshold 0.9), re-validates with Pydantic, and produces a reproducible **80/10/10** train/val/test split.
+## Safety architecture (defence in depth)
 
-### Schemas & constants
-- **`roboscript/schemas/`** — `RoboResponse`, ROS 2 payload models, telemetry models, and the `EMERGENCY_HALT_FALLBACK` constant.
-- **`roboscript/constants.py`** — `SYSTEM_PROMPT`, the 12-category fault taxonomy, and the LLM-as-judge rubric.
+1. **Schema** (`schemas/payload.py`): a closed decision vocabulary; `payload_type` must
+   match the `ros2` shape (cmd_vel and Nav2 can never co-occur); every halt decision on
+   `/cmd_vel` must be exactly zero velocity.
+2. **Deadline + fallback** (`serve/api.py`): timeout, transport error, unparsable or
+   schema-invalid output → `EMERGENCY_HALT_FALLBACK`.
+3. **Interlock** (`safety.py: guard`): a deterministic classifier with a fault priority
+   order. It overrides any answer that does not stop the robot when a stop is required,
+   and any direct `/cmd_vel` motion. It only ever makes an answer *more* conservative.
+4. **Life-safety fast path**: on `/v1/emergency`, person/forklift-in-path and e-stop are
+   answered by the interlock in about 1 ms. The LLM is not on the critical path for those.
+5. **Bridge** (`ros2_bridge/bridge_node.py`): re-validates every payload. An invalid
+   payload, an unreachable Nav2 action server or an API failure → zero Twist.
 
 ## Quickstart
 
 ```bash
-# 1. environment
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# 2. configure (copy and fill in your keys)
-cp .env.example .env          # set PROVIDER + the matching API key
+python -m pytest -q                                   # unit + integration tests
+python -m roboscript.ros2_bridge.bridge_node --demo   # telemetry → API → bridge → mock ROS 2
 
-# 3a. generate data with no API key (hand-authored seeds + rule-check)
-python -m roboscript.data.offline
+bash scripts/run_local_pipeline.sh                    # full CPU pipeline (~1.5–2 h, 4 cores)
+FAST=1 bash scripts/run_local_pipeline.sh             # smoke run (~10 min)
 
-# 3b. OR generate via an LLM provider (Gemini / Groq / OpenAI)
-python -m roboscript.data.synthetic --per-category 5 --delay 7
-
-# 4. prepare the training dataset (chat format + loss masking + split)
-python -m roboscript.data.pipeline
+ROBOSCRIPT_BACKEND=rules uvicorn roboscript.serve.api:app --port 8000
+curl -s localhost:8000/v1/emergency -H 'content-type: application/json' -d '{"yolo":null,
+  "lidar":{"min_distance_meters":2.0,"status":"CLEAR"},
+  "telemetry":{"current_speed_mps":1.0,"battery_level_pct":65,"active_fault_codes":["ERR_ESTOP_TRIGGERED"]}}'
 ```
 
-Outputs land in `data/processed/` as `sft_train.json`, `dpo_pairs.json`, and `train/val/test.json`.
+### GPU profile (PRD configuration)
 
-### Configuration (`.env`)
+```bash
+pip install bitsandbytes                       # + optionally unsloth, wandb
+python -m roboscript.data.synthetic --per-category 250 --delay 7   # or data.procedural
+python -m roboscript.data.pipeline
+python -m roboscript.eval.golden
+python -m roboscript.training.sft_trainer --profile gpu            # writes roboscript-sft-merged/
+python -m roboscript.data.onpolicy --model outputs/roboscript-sft-merged
+python -m roboscript.training.dpo_trainer --profile gpu --train-file data/processed/dpo_train_mixed.json
+python -m roboscript.distillation.distill --profile gpu            # sequence-level KD (vocab mismatch)
+python -m roboscript.eval.evaluator --profile gpu --models base=meta-llama/Llama-3.1-8B-Instruct \
+       sft=outputs/roboscript-sft-merged sft+dpo=outputs/roboscript-dpo-merged edge-kd=outputs/roboscript-edge
+python -m roboscript.serve.vllm_server                             # SFT-merged base + DPO adapter
+ROBOSCRIPT_BACKEND=vllm uvicorn roboscript.serve.api:app
+docker compose --profile gpu up
+python -m roboscript.deploy.sagemaker_deploy --dry-run
+```
 
-| Variable | Purpose |
-|----------|---------|
-| `PROVIDER` | `gemini` \| `groq` \| `openai` — selects the generation backend |
-| `GEMINI_API_KEY` / `GROQ_API_KEY` / `OPENAI_API_KEY` | key for the chosen provider |
-| `HF_TOKEN` | HuggingFace token for the Llama-3.1 tokenizer (loss masking step) |
+## Results (local CPU profile)
 
----
+See [`docs/eval_report.md`](docs/eval_report.md) (generated by `eval/evaluator.py`) and
+[`docs/PROJECT_REVIEW.md`](docs/PROJECT_REVIEW.md) for how to read the numbers. The local
+models are 5.3M (teacher) and 1.3M (edge student) parameter Llama-architecture models
+trained from scratch. They validate the pipeline and the relative effect of each stage.
+They are not a claim about what Llama-3.1-8B would score.
+
+## Fixes made to the original design
+
+| Issue | Fix |
+|---|---|
+| DPO pairs built from every SFT row, so val/test prompts leaked into DPO training | DPO pairs are partitioned by the SFT split |
+| One fixed "rejected" answer for every pair (DPO saturates and learns little) | scenario-aware hard negatives (5 failure modes) plus on-policy negatives mined from the SFT model |
+| Logit KL between Llama-3.1 and Phi-3 (different vocabularies, so undefined) | `distill.py` detects the vocab mismatch and uses sequence-level KD; logit KD otherwise |
+| KD loss `batchmean` over all positions (prompt + padding distilled, wrong normaliser) | KL masked to assistant tokens, averaged per token |
+| vLLM served the DPO adapter on the raw base model (the adapter was trained on SFT-merged weights) | vLLM base = merged SFT checkpoint, DPO = adapter on top |
+| "EMERGENCY_HALT ⇒ zero velocity" stated in the README but not enforced | enforced by Pydantic validators and re-checked in the bridge |
+| `cmd_vel` was an untyped `dict`; `payload_type`/`ros2` consistency only checked offline | typed `Vector3`; consistency enforced in the schema |
+| Tokenization hard-wired to the Llama-3.1 tokenizer | splits stored as chat messages; each trainer masks with its own tokenizer |
+| LLM-generated examples were labelled with the *requested* category, not the actual one | deterministic classifier relabels; unsafe generations are discarded before the judge |
 
 ## Project structure
 
 ```
 roboscript/
-├── constants.py            # SYSTEM_PROMPT, 12-category taxonomy, judge rubric
-├── schemas/
-│   ├── payload.py          # RoboResponse + ROS 2 payloads + EMERGENCY_HALT_FALLBACK
-│   └── telemetry.py        # YOLO / LiDAR / fleet telemetry models
-└── data/
-    ├── synthetic.py        # multi-provider generation + validate + judge + DPO
-    ├── offline.py          # no-API builder (deterministic rule-check)
-    └── pipeline.py         # chat format + loss masking + dedup + split
-data/seed/examples.json     # hand-authored seed scenarios
-RoboScript_PRD.md           # full product/architecture spec
+├── constants.py              SYSTEM_PROMPT, 12-category taxonomy, judge rubric
+├── safety.py                 classifier (priority order), reference policy, check(), guard()
+├── schemas/                  RoboResponse (+ invariants), telemetry models
+├── data/                     synthetic.py · offline.py · procedural.py · negatives.py · onpolicy.py · pipeline.py
+├── training/                 common.py (profiles) · bootstrap.py · sft_trainer.py · dpo_trainer.py
+├── distillation/distill.py   logit / sequence-level KD
+├── eval/                     golden.py · evaluator.py · generate.py
+├── serve/                    api.py · backends.py · vllm_server.py
+├── ros2_bridge/              bridge_node.py · mock_subscriber.py · transport.py (rclpy | in-process)
+└── deploy/                   entrypoint.py (SageMaker /ping /invocations) · sagemaker_deploy.py
+data/seed/examples.json       36 hand-authored seeds (all agree with safety.reference_action)
+data/golden/eval_cases.json   50 safety-critical + 120 compound stress cases
+docker/ · docker-compose.yml · scripts/run_local_pipeline.sh · tests/{unit,integration}
 ```
-
----
-
-## Tech stack
-
-**Python · Pydantic · HuggingFace Transformers · datasketch (MinHash) · OpenAI-compatible LLM APIs (Gemini / Groq / OpenAI)**
-Training & serving: Unsloth · TRL (SFT/DPO) · vLLM · FastAPI · ROS 2 (rclpy) · Docker · AWS SageMaker
-
----
 
 ## License
 
-Educational / portfolio project. See `RoboScript_PRD.md` for the full specification.
+Educational / portfolio project.

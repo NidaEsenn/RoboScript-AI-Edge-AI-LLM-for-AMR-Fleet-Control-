@@ -6,3 +6,6 @@ data/processed/
 # Local-only assistant guidance — not pushed
 CLAUDE.md
 CLAUDE-2.md
+outputs/
+logs/
+.pytest_cache/

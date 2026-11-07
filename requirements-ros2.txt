@@ -1,0 +1,6 @@
+# rclpy, geometry_msgs, std_msgs and nav2_msgs come from the ROS 2 apt packages.
+httpx>=0.27
+pydantic>=2.7
+fastapi>=0.110
+datasketch>=1.6
+pytest>=8

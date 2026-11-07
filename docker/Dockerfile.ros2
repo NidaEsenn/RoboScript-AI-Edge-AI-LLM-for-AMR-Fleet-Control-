@@ -1,0 +1,13 @@
+# ROS 2 Humble + rclpy bridge node (PRD 6.8). Uses host networking for DDS.
+FROM ros:humble-ros-base-jammy
+SHELL ["/bin/bash", "-c"]
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3-pip ros-humble-nav2-msgs && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY requirements-ros2.txt .
+RUN pip3 install --no-cache-dir -r requirements-ros2.txt
+COPY roboscript/ ./roboscript/
+COPY tests/ ./tests/
+COPY data/ ./data/
+ENV FASTAPI_URL=http://localhost:8000 ROS_DOMAIN_ID=42
+CMD source /opt/ros/humble/setup.bash && python3 -m roboscript.ros2_bridge.bridge_node

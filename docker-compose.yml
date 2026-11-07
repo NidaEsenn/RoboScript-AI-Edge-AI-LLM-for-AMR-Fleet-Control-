@@ -1,0 +1,33 @@
+# docker compose up               -> rules backend (no GPU) + API + ROS 2 bridge
+# docker compose --profile gpu up -> adds vLLM with the SFT base + DPO adapter
+services:
+  vllm:
+    profiles: ["gpu"]
+    image: vllm/vllm-openai:v0.6.3
+    command: >
+      --model /models/roboscript-sft-merged --served-model-name roboscript-sft
+      --enable-lora --lora-modules roboscript-dpo=/models/roboscript-dpo
+      --max-lora-rank 16 --max-model-len 1024 --port 8080
+    volumes: ["./outputs:/models:ro"]
+    ports: ["8080:8080"]
+    deploy:
+      resources:
+        reservations:
+          devices: [{driver: nvidia, count: 1, capabilities: [gpu]}]
+
+  roboscript_api:
+    build: {context: ., dockerfile: docker/Dockerfile}
+    environment:
+      - ROBOSCRIPT_BACKEND=${ROBOSCRIPT_BACKEND:-rules}
+      - VLLM_URL=http://vllm:8080/v1
+      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2:-false}
+      - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY:-}
+    ports: ["8000:8000"]
+
+  ros2_bridge:
+    build: {context: ., dockerfile: docker/Dockerfile.ros2}
+    environment:
+      - FASTAPI_URL=http://localhost:8000
+      - ROS_DOMAIN_ID=42
+    depends_on: [roboscript_api]
+    network_mode: host          # ROS 2 DDS requires host networking

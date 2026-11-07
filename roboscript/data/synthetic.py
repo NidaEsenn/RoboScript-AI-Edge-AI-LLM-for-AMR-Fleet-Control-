@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import random
 import time
 from pathlib import Path
 
@@ -29,7 +30,8 @@ from pydantic import ValidationError
 load_dotenv()  # read provider keys (GEMINI_API_KEY / GROQ_API_KEY / OPENAI_API_KEY)
 
 from roboscript.constants import SYSTEM_PROMPT, FAULT_CATEGORIES, EVAL_JUDGE_PROMPT
-from roboscript.data.offline import make_rejected
+from roboscript.data.negatives import make_hard_negative
+from roboscript.safety import check as safety_check
 from roboscript.schemas.payload import RoboResponse
 
 OUT_DIR = Path("data/processed")
@@ -176,6 +178,7 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     sft_rows: list[dict] = []
     dpo_rows: list[dict] = []
+    rng = random.Random(0)
 
     for cat in FAULT_CATEGORIES:
         kept = 0
@@ -196,12 +199,19 @@ def main() -> None:
                 print(f"  [validate] category {cat['id']} invalid: {e.error_count()} errs")
                 continue
 
+            # Deterministic safety gate before spending a judge call: the LLM must not
+            # teach an unsafe action, whatever the judge thinks of it.
+            verdict = safety_check(raw["scenario"], raw["response"])
+            if not verdict.safe or verdict.category is None:
+                print(f"  [safety] category {cat['id']} rejected: {verdict.violations}")
+                continue
+
             score = judge(raw["scenario"], raw["response"], model)
             if score < JUDGE_THRESHOLD:
                 continue
 
             sft_rows.append({
-                "category_id": cat["id"],
+                "category_id": verdict.category,
                 "scenario": raw["scenario"],
                 "response": raw["response"],
                 "judge_score": score,
@@ -210,10 +220,13 @@ def main() -> None:
 
             # DPO pair: keep high-scoring examples as 'chosen' vs an unsafe 'rejected'.
             if score >= CHOSEN_THRESHOLD:
+                rejected, mode = make_hard_negative(raw["scenario"], raw["response"], rng)
                 dpo_rows.append({
                     "prompt": json.dumps(raw["scenario"]),
                     "chosen": json.dumps(raw["response"]),
-                    "rejected": json.dumps(make_rejected(cat)),
+                    "rejected": json.dumps(rejected),
+                    "failure_mode": mode,
+                    "category_id": cat["id"],
                 })
         print(f"category {cat['id']:>2} ({cat['name']}): kept {kept}/{args.per_category}")
 

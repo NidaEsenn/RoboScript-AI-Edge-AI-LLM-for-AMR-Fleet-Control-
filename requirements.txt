@@ -1,6 +1,21 @@
+# data
 openai>=1.40
 pydantic>=2.7
 python-dotenv>=1.0
-transformers>=4.44
 datasketch>=1.6
 jinja2>=3.1
+# training / eval
+torch>=2.3
+transformers>=4.56
+trl>=0.23
+peft>=0.13
+accelerate>=1.0
+datasets>=3.0
+tokenizers>=0.20
+# GPU profile only (QLoRA): bitsandbytes>=0.43 ; optional: unsloth, wandb
+# serving
+fastapi>=0.110
+uvicorn>=0.29
+httpx>=0.27
+# tests
+pytest>=8
