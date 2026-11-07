@@ -1,0 +1,10 @@
+{
+  "logged_steps": 29,
+  "margins_first": 0.03429080918431282,
+  "margins_last": 8.62619400024414,
+  "margins_positive_all_steps": true,
+  "chosen_gt_rejected_all_steps": true,
+  "final_reward_accuracy": 0.9875,
+  "eval_margins": 8.427314811282688,
+  "eval_accuracy": 1.0
+}
