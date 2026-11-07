@@ -54,6 +54,11 @@ class Profile:
     dpo_batch: int = 1
     dpo_grad_accum: int = 16
     dpo_beta: float = 0.1
+    # RPO = DPO + NLL on the chosen answer (Pang et al., 2024). Pure sigmoid DPO pushed
+    # the chosen log-prob down (likelihood displacement) and broke JSON validity in our
+    # local run; the NLL anchor keeps the policy on the valid-output manifold.
+    dpo_loss_types: list[str] = field(default_factory=lambda: ["sigmoid", "sft"])
+    dpo_loss_weights: list[float] = field(default_factory=lambda: [1.0, 1.0])
     # LoRA
     lora_r: int = 16
     lora_alpha: int = 32
@@ -74,7 +79,7 @@ PROFILES = {
         name="local", base_model=str(OUT_DIR / "local-base"), max_length=512,
         sft_epochs=10, sft_lr=1.5e-3, sft_batch=16, sft_grad_accum=1, sft_use_lora=False,
         load_in_4bit=False, bf16=False,
-        dpo_epochs=1, dpo_lr=1e-3, dpo_batch=16, dpo_grad_accum=1,
+        dpo_epochs=1, dpo_lr=2e-4, dpo_batch=16, dpo_grad_accum=1,
         student_model=str(OUT_DIR / "local-student-init"),
         distill_epochs=10, distill_lr=1.5e-3, distill_temperature=2.0,
     ),

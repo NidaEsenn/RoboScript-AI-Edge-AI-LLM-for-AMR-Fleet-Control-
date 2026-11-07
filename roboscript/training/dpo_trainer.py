@@ -60,12 +60,19 @@ def main() -> None:
     ap.add_argument("--train-file", default=str(DATA_DIR / "dpo_train.json"),
                     help="dpo_train.json (off-policy) or dpo_train_mixed.json (+ on-policy, see data/onpolicy.py)")
     ap.add_argument("--out", default=str(OUT_DIR / "roboscript-dpo"))
+    ap.add_argument("--loss", default=None, choices=["dpo", "rpo"],
+                    help="dpo = sigmoid only (PRD); rpo = sigmoid + NLL on chosen (default)")
+    ap.add_argument("--lr", type=float, default=None)
     ap.add_argument("--push-to-hub", default=None, help="{HF_USERNAME}/roboscript-dpo-adapter")
     a = ap.parse_args()
 
     from trl import DPOConfig, DPOTrainer
 
     prof = get_profile(a.profile)
+    if a.loss == "dpo":
+        prof.dpo_loss_types, prof.dpo_loss_weights = ["sigmoid"], [1.0]
+    if a.lr:
+        prof.dpo_lr = a.lr
     sft_dir = a.sft or str(OUT_DIR / ("roboscript-sft-merged" if prof.sft_use_lora else "roboscript-sft"))
     tok = load_tokenizer(sft_dir)
     model = load_causal_lm(sft_dir, prof)
@@ -77,7 +84,8 @@ def main() -> None:
     cfg = DPOConfig(
         output_dir=a.out,
         beta=prof.dpo_beta,
-        loss_type=["sigmoid"],
+        loss_type=prof.dpo_loss_types,
+        loss_weights=prof.dpo_loss_weights,
         max_length=prof.max_length,
         num_train_epochs=a.epochs or prof.dpo_epochs,
         per_device_train_batch_size=prof.dpo_batch,
@@ -105,6 +113,8 @@ def main() -> None:
     health = dpo_health(trainer.state.log_history)
     (Path(a.out) / "dpo_health.json").write_text(json.dumps(health, indent=2))
     health["train_file"] = a.train_file
+    health["loss_types"] = prof.dpo_loss_types
+    health["lr"] = prof.dpo_lr
     health["train_pairs"] = len(train)
     print("DPO health:", json.dumps(health, indent=2))
 
