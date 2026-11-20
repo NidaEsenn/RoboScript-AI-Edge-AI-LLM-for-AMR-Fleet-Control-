@@ -4,7 +4,9 @@ A domain-specific LLM pipeline that turns Amazon-style **Autonomous Mobile Robot
 
 Given a fault scenario (LiDAR distance, YOLO detections, fleet telemetry, fault codes), the model decides the safest action and emits **valid JSON** that a ROS 2 bridge can dispatch directly — halt, reroute, return-to-dock, or log-only.
 
-It's LLM postraning-MLOPS project
+An LLM post-training and MLOps project.
+
+> **Status:** the synthetic data pipeline (generation, Pydantic validation, LLM-as-judge filtering, DPO pairs, dedup and splits) is implemented in `roboscript/data/`. QLoRA SFT, DPO alignment, distillation and the vLLM / ROS 2 serving layer are in progress.
 
 ---
 
