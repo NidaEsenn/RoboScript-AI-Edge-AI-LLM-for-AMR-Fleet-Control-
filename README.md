@@ -6,6 +6,8 @@ into a single, schema-validated **ROS 2 action payload** — halt, reroute, retu
 or log-only — with safety enforced by deterministic layers around the model, not only by
 the model.
 
+An LLM post-training and MLOps project.
+
 ```
  telemetry ─▶ synthetic / procedural data ─▶ validate ─▶ judge ─▶ SFT pairs + hard-negative DPO pairs
                                                                   │
