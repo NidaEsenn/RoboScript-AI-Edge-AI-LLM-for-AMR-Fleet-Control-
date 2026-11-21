@@ -12,11 +12,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import random
 from pathlib import Path
 
 from pydantic import ValidationError
 
 from roboscript.constants import FAULT_CATEGORIES
+from roboscript.data.negatives import make_hard_negative
 from roboscript.schemas.payload import RoboResponse
 
 SEED_PATH = Path("data/seed/examples.json")
@@ -90,6 +92,7 @@ def main() -> None:
     args = ap.parse_args()
 
     seed = json.loads(Path(args.seed).read_text())
+    rng = random.Random(0)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     sft_rows: list[dict] = []
@@ -124,12 +127,15 @@ def main() -> None:
         })
         kept_by_cat[cat["id"]] += 1
 
-        # 3. DPO pair: safe chosen vs unsafe rejected.
+        # 3. DPO pair: safe chosen vs a scenario-aware hard negative.
         if PASS_SCORE >= CHOSEN_THRESHOLD:
+            rejected, mode = make_hard_negative(ex["scenario"], resp, rng)
             dpo_rows.append({
                 "prompt": json.dumps(ex["scenario"]),
                 "chosen": json.dumps(resp),
-                "rejected": json.dumps(make_rejected(cat)),
+                "rejected": json.dumps(rejected),
+                "failure_mode": mode,
+                "category_id": cat["id"],
             })
 
     (OUT_DIR / "sft_train.json").write_text(json.dumps(sft_rows, indent=2))

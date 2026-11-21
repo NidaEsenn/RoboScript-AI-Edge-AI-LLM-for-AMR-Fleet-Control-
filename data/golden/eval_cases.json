@@ -1,0 +1,7830 @@
+{
+ "safety_critical": [
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      325,
+      215,
+      64,
+      193
+     ],
+     "confidence": 0.94
+    },
+    "lidar": {
+     "min_distance_meters": 0.8,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 59,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 0.8m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.5,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 42,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.4 m/s. Mandatory zero-velocity halt, operator reset required.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      304,
+      200,
+      62,
+      199
+     ],
+     "confidence": 0.83
+    },
+    "lidar": {
+     "min_distance_meters": 1.87,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 38,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (forklift) in path at 1.87m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.3,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 33,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.1 m/s. Mandatory zero-velocity halt, operator reset required.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      195,
+      236,
+      95,
+      181
+     ],
+     "confidence": 0.96
+    },
+    "lidar": {
+     "min_distance_meters": 1.86,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 24,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.96 confidence, 1.86m ahead. Mandatory halt. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 78,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.0 m/s. Mandatory zero-velocity halt, operator reset required.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      347,
+      289,
+      96,
+      172
+     ],
+     "confidence": 0.92
+    },
+    "lidar": {
+     "min_distance_meters": 1.08,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 45,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.92 confidence, 1.08m ahead. Mandatory halt.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 95,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=103"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.0 m/s. Mandatory zero-velocity halt, operator reset required. ERR_MOTOR_OVERHEAT_R deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      440,
+      200,
+      136,
+      246
+     ],
+     "confidence": 0.83
+    },
+    "lidar": {
+     "min_distance_meters": 1.5,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 30,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.83 confidence, 1.5m ahead. Mandatory halt.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 36,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.2 m/s. Mandatory zero-velocity halt, operator reset required. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      299,
+      275,
+      138,
+      162
+     ],
+     "confidence": 0.88
+    },
+    "lidar": {
+     "min_distance_meters": 2.1,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 82,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (forklift) in path at 2.1m. Emergency halt, no auto-recovery. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 14,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.8 m/s. Mandatory zero-velocity halt, operator reset required. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      283,
+      281,
+      62,
+      169
+     ],
+     "confidence": 0.92
+    },
+    "lidar": {
+     "min_distance_meters": 0.61,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 9,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.92 confidence, 0.61m ahead. Mandatory halt. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.5,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 88,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.9 m/s. Mandatory zero-velocity halt, operator reset required.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      194,
+      201,
+      124,
+      163
+     ],
+     "confidence": 0.84
+    },
+    "lidar": {
+     "min_distance_meters": 2.44,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 22,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 2.44m. Emergency halt, no auto-recovery. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 83,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=96"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_MOTOR_OVERHEAT_R deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      361,
+      232,
+      72,
+      252
+     ],
+     "confidence": 0.92
+    },
+    "lidar": {
+     "min_distance_meters": 1.49,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 32,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 1.49m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 85,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      143,
+      202,
+      100,
+      250
+     ],
+     "confidence": 0.9
+    },
+    "lidar": {
+     "min_distance_meters": 2.94,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 95,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.9 confidence, 2.94m ahead. Mandatory halt.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.2,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 9,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      134,
+      240,
+      80,
+      212
+     ],
+     "confidence": 0.89
+    },
+    "lidar": {
+     "min_distance_meters": 1.18,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 49,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 1.18m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 9,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      380,
+      168,
+      71,
+      215
+     ],
+     "confidence": 0.81
+    },
+    "lidar": {
+     "min_distance_meters": 0.73,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 87,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (forklift) in path at 0.73m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.2,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 82,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=98"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.4 m/s. Mandatory zero-velocity halt, operator reset required. ERR_MOTOR_OVERHEAT_L deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      128,
+      221,
+      111,
+      198
+     ],
+     "confidence": 0.86
+    },
+    "lidar": {
+     "min_distance_meters": 1.38,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 67,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.86 confidence, 1.38m ahead. Mandatory halt.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 1.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 40,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.2 m/s. Mandatory zero-velocity halt, operator reset required.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      284,
+      206,
+      121,
+      202
+     ],
+     "confidence": 0.94
+    },
+    "lidar": {
+     "min_distance_meters": 2.59,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 78,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (forklift) in path at 2.59m. Emergency halt, no auto-recovery. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 82,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      207,
+      264,
+      97,
+      152
+     ],
+     "confidence": 0.96
+    },
+    "lidar": {
+     "min_distance_meters": 1.82,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 18,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.96 confidence, 1.82m ahead. Mandatory halt. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 5,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.6 m/s. Mandatory zero-velocity halt, operator reset required. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      395,
+      247,
+      97,
+      188
+     ],
+     "confidence": 0.96
+    },
+    "lidar": {
+     "min_distance_meters": 1.12,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 51,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 1.12m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 40,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=88"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.0 m/s. Mandatory zero-velocity halt, operator reset required. ERR_MOTOR_OVERHEAT_R deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      132,
+      228,
+      138,
+      149
+     ],
+     "confidence": 0.89
+    },
+    "lidar": {
+     "min_distance_meters": 2.61,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 42,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.35"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.89 confidence, 2.61m ahead. Mandatory halt. ERR_ENCODER_DRIFT deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 72,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.3 m/s. Mandatory zero-velocity halt, operator reset required.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      338,
+      143,
+      72,
+      251
+     ],
+     "confidence": 0.95
+    },
+    "lidar": {
+     "min_distance_meters": 2.12,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 61,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 2.12m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 49,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      318,
+      162,
+      101,
+      196
+     ],
+     "confidence": 0.96
+    },
+    "lidar": {
+     "min_distance_meters": 0.32,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 33,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 0.32m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 22,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      427,
+      192,
+      103,
+      167
+     ],
+     "confidence": 0.94
+    },
+    "lidar": {
+     "min_distance_meters": 0.47,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 92,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 0.47m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 66,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.0 m/s. Mandatory zero-velocity halt, operator reset required. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      244,
+      208,
+      133,
+      192
+     ],
+     "confidence": 0.93
+    },
+    "lidar": {
+     "min_distance_meters": 1.38,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 20,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.93 confidence, 1.38m ahead. Mandatory halt. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.3,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 89,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      461,
+      269,
+      101,
+      248
+     ],
+     "confidence": 0.98
+    },
+    "lidar": {
+     "min_distance_meters": 0.77,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 69,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 0.77m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 65,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.6 m/s. Mandatory zero-velocity halt, operator reset required.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      408,
+      274,
+      71,
+      258
+     ],
+     "confidence": 0.94
+    },
+    "lidar": {
+     "min_distance_meters": 1.52,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 79,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.94 confidence, 1.52m ahead. Mandatory halt.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 52,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.6 m/s. Mandatory zero-velocity halt, operator reset required.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      161,
+      262,
+      129,
+      146
+     ],
+     "confidence": 0.93
+    },
+    "lidar": {
+     "min_distance_meters": 2.3,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 33,
+     "active_fault_codes": []
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 2.3m. Emergency halt, no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.2,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 59,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      294,
+      193,
+      98,
+      143
+     ],
+     "confidence": 0.81
+    },
+    "lidar": {
+     "min_distance_meters": 2.62,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 18,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.81 confidence, 2.62m ahead. Mandatory halt. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 31,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=89"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_MOTOR_OVERHEAT_R deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  }
+ ],
+ "stress": [
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      382,
+      208,
+      117,
+      151
+     ],
+     "confidence": 0.2
+    },
+    "lidar": {
+     "min_distance_meters": 2.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 34,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.3 m/s. Mandatory zero-velocity halt, operator reset required. ERR_CAMERA_DEGRADED deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.22,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.4,
+     "battery_level_pct": 10,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=5.7g",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Collision with 5.7g IMU spike. Halting and requesting damage audit.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      199,
+      173,
+      137,
+      91
+     ],
+     "confidence": 0.28
+    },
+    "lidar": {
+     "min_distance_meters": 4.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 88,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "LIDAR_ONLY_MODE",
+    "reasoning": "Camera degraded (conf 0.28). Switching to LiDAR-only mode, fault logged.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.0,
+     "status": "SENSOR_FAULT"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 15,
+     "active_fault_codes": [
+      "ERR_LIDAR_NODATA",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 3,
+   "reference": {
+    "decision": "HALT_AND_REPORT",
+    "reasoning": "LiDAR fault (ERR_LIDAR_NODATA) at 0.9 m/s. Obstacle data untrusted, halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true,
+     "zone_update": "SENSOR_FAULT_HOLD"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 1.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 67,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_HIGH",
+      "floor=WET",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=88"
+     ]
+    }
+   },
+   "category_id": 8,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_WHEEL_SLIP_HIGH with floor=WET. Emergency halt until floor is cleared.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      189,
+      153,
+      133,
+      235
+     ],
+     "confidence": 0.87
+    },
+    "lidar": {
+     "min_distance_meters": 2.08,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 93,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.18"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.87 confidence, 2.08m ahead. Mandatory halt. ERR_ENCODER_DRIFT deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      437,
+      149,
+      118,
+      207
+     ],
+     "confidence": 0.99
+    },
+    "lidar": {
+     "min_distance_meters": 2.9,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 91,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Person detected at 0.99 confidence, 2.9m ahead. Mandatory halt. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      313,
+      168,
+      75,
+      103
+     ],
+     "confidence": 0.07
+    },
+    "lidar": {
+     "min_distance_meters": 6.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 77,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.6 m/s. Mandatory zero-velocity halt, operator reset required. ERR_CAMERA_DEGRADED deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 42,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_HIGH",
+      "floor=WET",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=86"
+     ]
+    }
+   },
+   "category_id": 8,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_WHEEL_SLIP_HIGH with floor=WET. Emergency halt until floor is cleared.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 92,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=98"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 98C exceeds limit at 0.7 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 11,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=105"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 105C exceeds limit at 1.2 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 16,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.2",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Encoder drift, localization 0.2. Halting to relocalize.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 25,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=89"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Overheat (89C). Emergency halt and maintenance audit.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "damaged_pallet",
+     "bbox_xywh": [
+      174,
+      210,
+      85,
+      133
+     ],
+     "confidence": 0.96
+    },
+    "lidar": {
+     "min_distance_meters": 0.51,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 20,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "DYNAMIC_REROUTE",
+    "reasoning": "Damaged_pallet blocking lane at 0.51m. Rerouting via Nav2 replanner.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 17.6,
+        "y": 4.0,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_replanning_and_recovery.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false,
+     "zone_update": "ROUTE_MODIFIED_E6"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 18,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 14,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=100"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 100C exceeds limit at 0.7 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      218,
+      237,
+      136,
+      149
+     ],
+     "confidence": 0.12
+    },
+    "lidar": {
+     "min_distance_meters": 6.5,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 56,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "Camera degraded (conf 0.12). Reducing speed, LiDAR primary.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 24.2,
+        "y": 14.7,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.56,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 12,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=5.9g",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Impact detected (5.9g). Robot must not move until inspected.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      211,
+      206,
+      95,
+      110
+     ],
+     "confidence": 0.19
+    },
+    "lidar": {
+     "min_distance_meters": 5.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 61,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "LIDAR_ONLY_MODE",
+    "reasoning": "Vision unreliable; continuing in LiDAR-only mode and logging camera fault.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "box",
+     "bbox_xywh": [
+      422,
+      200,
+      81,
+      134
+     ],
+     "confidence": 0.67
+    },
+    "lidar": {
+     "min_distance_meters": 0.5,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 87,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=102"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 102C exceeds limit at 1.3 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.38,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.3,
+     "battery_level_pct": 3,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=2.9g",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Impact detected (2.9g). Robot must not move until inspected.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.48,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.2,
+     "battery_level_pct": 6,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=5.6g",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Collision with 5.6g IMU spike. Halting and requesting damage audit.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      458,
+      179,
+      82,
+      132
+     ],
+     "confidence": 0.25
+    },
+    "lidar": {
+     "min_distance_meters": 1.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 71,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.7 m/s. Mandatory zero-velocity halt, operator reset required. ERR_CAMERA_DEGRADED deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 90,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 57,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.26",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.26 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "box",
+     "bbox_xywh": [
+      434,
+      161,
+      79,
+      95
+     ],
+     "confidence": 0.87
+    },
+    "lidar": {
+     "min_distance_meters": 0.32,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 79,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "box at 0.32m inside stopping distance at 1.0 m/s. Halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "TEMPORARY_BLOCKAGE_ZONE_G3"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.5,
+     "battery_level_pct": 11,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 4,
+   "reference": {
+    "decision": "NAVIGATE_TO_CHARGING_DOCK",
+    "reasoning": "Battery critical at 11%. Routing to nearest charging dock via Nav2.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 4.7,
+        "y": 1.7,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_to_dock.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false,
+     "zone_update": "RETURNING_TO_DOCK_F4"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.5,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 3,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=97"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 97C exceeds limit at 0.9 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 22,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 7,
+   "reference": {
+    "decision": "CONTINUE",
+    "reasoning": "Low slip at low speed; safe to continue, logging for maintenance.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_0",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "person",
+     "bbox_xywh": [
+      383,
+      220,
+      68,
+      240
+     ],
+     "confidence": 0.83
+    },
+    "lidar": {
+     "min_distance_meters": 1.99,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 76,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (person) in path at 1.99m. Emergency halt, no auto-recovery. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 32,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "tote",
+     "bbox_xywh": [
+      202,
+      267,
+      133,
+      155
+     ],
+     "confidence": 0.87
+    },
+    "lidar": {
+     "min_distance_meters": 0.33,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 82,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=92"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Overheat (92C). Emergency halt and maintenance audit.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 15,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 1.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 6,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.0 m/s. Mandatory zero-velocity halt, operator reset required. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 93,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.0 m/s. Mandatory zero-velocity halt, operator reset required. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 84,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.32",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.32 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.0,
+     "status": "SENSOR_FAULT"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 55,
+     "active_fault_codes": [
+      "ERR_LIDAR_NAN",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=90"
+     ]
+    }
+   },
+   "category_id": 3,
+   "reference": {
+    "decision": "HALT_AND_REPORT",
+    "reasoning": "Primary LiDAR returning 0.0m readings. Stopping and flagging maintenance.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true,
+     "zone_update": "SENSOR_FAULT_HOLD"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "pallet",
+     "bbox_xywh": [
+      267,
+      248,
+      104,
+      130
+     ],
+     "confidence": 0.66
+    },
+    "lidar": {
+     "min_distance_meters": 0.35,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 76,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=94"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 94C exceeds limit at 1.4 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 91,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.0 m/s. Mandatory zero-velocity halt, operator reset required. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 3,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=96"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 96C exceeds limit at 0.8 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 34,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=88"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_MOTOR_OVERHEAT_L deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 3,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=104"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Overheat (104C). Emergency halt and maintenance audit.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "shrink_wrap",
+     "bbox_xywh": [
+      399,
+      145,
+      61,
+      143
+     ],
+     "confidence": 0.7
+    },
+    "lidar": {
+     "min_distance_meters": 0.4,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 80,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Static obstruction (shrink_wrap) 0.4m ahead. Emergency halt before replanning.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "TEMPORARY_BLOCKAGE_ZONE_B6"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.0,
+     "status": "SENSOR_FAULT"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 24,
+     "active_fault_codes": [
+      "ERR_LIDAR_NODATA",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 3,
+   "reference": {
+    "decision": "HALT_AND_REPORT",
+    "reasoning": "LiDAR fault (ERR_LIDAR_NODATA) at 0.8 m/s. Obstacle data untrusted, halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true,
+     "zone_update": "SENSOR_FAULT_HOLD"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "box",
+     "bbox_xywh": [
+      149,
+      178,
+      98,
+      118
+     ],
+     "confidence": 0.76
+    },
+    "lidar": {
+     "min_distance_meters": 0.42,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 9,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "box at 0.42m inside stopping distance at 1.1 m/s. Halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "TEMPORARY_BLOCKAGE_ZONE_F6"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.26,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.2,
+     "battery_level_pct": 16,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=4.4g",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Impact detected (4.4g). Robot must not move until inspected.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.0,
+     "status": "SENSOR_FAULT"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 18,
+     "active_fault_codes": [
+      "ERR_LIDAR_NAN",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 3,
+   "reference": {
+    "decision": "HALT_AND_REPORT",
+    "reasoning": "LiDAR fault (ERR_LIDAR_NAN) at 0.8 m/s. Obstacle data untrusted, halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "cart",
+     "bbox_xywh": [
+      467,
+      161,
+      76,
+      98
+     ],
+     "confidence": 0.74
+    },
+    "lidar": {
+     "min_distance_meters": 0.28,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 9,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "cart at 0.28m inside stopping distance at 1.0 m/s. Halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "TEMPORARY_BLOCKAGE_ZONE_E1"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 60,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_HIGH",
+      "floor=WET",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=89"
+     ]
+    }
+   },
+   "category_id": 8,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "High wheel slip on wet floor at 0.8 m/s. Halting to avoid uncontrolled skid.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      150,
+      173,
+      81,
+      112
+     ],
+     "confidence": 0.12
+    },
+    "lidar": {
+     "min_distance_meters": 2.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 89,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_CAMERA_DEGRADED deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      233,
+      255,
+      132,
+      116
+     ],
+     "confidence": 0.21
+    },
+    "lidar": {
+     "min_distance_meters": 4.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 25,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "Camera degraded (conf 0.21). Reducing speed, LiDAR primary.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 19.8,
+        "y": 16.4,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 14,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=88"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "THERMAL_COOLDOWN",
+    "reasoning": "Motor at 88C, moderate speed. Logging and entering thermal cooldown.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 11,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=92"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 92C exceeds limit at 1.4 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.3,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 33,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=88",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 88C exceeds limit at 1.4 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.2,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 23,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 13,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_ENCODER_DRIFT",
+      "localization=0.16"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.16 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.45,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 25,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=5.8g",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Collision with 5.8g IMU spike. Halting and requesting damage audit.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      382,
+      209,
+      113,
+      194
+     ],
+     "confidence": 0.89
+    },
+    "lidar": {
+     "min_distance_meters": 2.96,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 83,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (forklift) in path at 2.96m. Emergency halt, no auto-recovery. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      214,
+      217,
+      77,
+      156
+     ],
+     "confidence": 0.1
+    },
+    "lidar": {
+     "min_distance_meters": 2.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 17,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW",
+      "ERR_CAMERA_DEGRADED"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "Camera degraded (conf 0.1). Reducing speed, LiDAR primary.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 23.0,
+        "y": 14.7,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 47,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=95"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.0 m/s. Mandatory zero-velocity halt, operator reset required. ERR_MOTOR_OVERHEAT_L deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 19,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=94",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 94C exceeds limit at 1.2 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 23,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.24",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Encoder drift, localization 0.24. Halting to relocalize.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 7,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.16",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.16 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "cart",
+     "bbox_xywh": [
+      242,
+      151,
+      136,
+      80
+     ],
+     "confidence": 0.86
+    },
+    "lidar": {
+     "min_distance_meters": 0.5,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 42,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=100"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 100C exceeds limit at 0.7 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.5,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 9,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 4,
+   "reference": {
+    "decision": "NAVIGATE_TO_CHARGING_DOCK",
+    "reasoning": "Battery 9% below safe margin. Abandoning task, navigating to dock.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 1.8,
+        "y": 5.8,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_to_dock.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false,
+     "zone_update": "RETURNING_TO_DOCK_B1"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 17,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.3 m/s. Mandatory zero-velocity halt, operator reset required. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.5,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 13,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=105",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 105C exceeds limit at 1.4 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      333,
+      154,
+      79,
+      80
+     ],
+     "confidence": 0.13
+    },
+    "lidar": {
+     "min_distance_meters": 7.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 25,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "YOLO confidence 0.13 unreliable at 1.2 m/s. Speed-limited navigation.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 20.8,
+        "y": 25.8,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "cart",
+     "bbox_xywh": [
+      161,
+      242,
+      99,
+      117
+     ],
+     "confidence": 0.85
+    },
+    "lidar": {
+     "min_distance_meters": 0.58,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 22,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "DYNAMIC_REROUTE",
+    "reasoning": "Cart blocking lane at 0.58m. Rerouting via Nav2 replanner.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 2.9,
+        "y": 7.9,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_replanning_and_recovery.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 1.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 11,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      287,
+      178,
+      87,
+      181
+     ],
+     "confidence": 0.92
+    },
+    "lidar": {
+     "min_distance_meters": 2.31,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 8,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (forklift) in path at 2.31m. Emergency halt, no auto-recovery. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      478,
+      288,
+      106,
+      80
+     ],
+     "confidence": 0.16
+    },
+    "lidar": {
+     "min_distance_meters": 5.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 42,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "Camera degraded (conf 0.16). Reducing speed, LiDAR primary.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 5.1,
+        "y": 9.6,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.46,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 25,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=5.2g",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Impact detected (5.2g). Robot must not move until inspected.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "cart",
+     "bbox_xywh": [
+      146,
+      199,
+      70,
+      142
+     ],
+     "confidence": 0.88
+    },
+    "lidar": {
+     "min_distance_meters": 0.41,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 34,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=90"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 90C exceeds limit at 0.7 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      405,
+      299,
+      114,
+      154
+     ],
+     "confidence": 0.22
+    },
+    "lidar": {
+     "min_distance_meters": 5.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 8,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 4,
+   "reference": {
+    "decision": "NAVIGATE_TO_CHARGING_DOCK",
+    "reasoning": "Battery 8% below safe margin. Abandoning task, navigating to dock.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 0.5,
+        "y": 4.1,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_to_dock.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false,
+     "zone_update": "RETURNING_TO_DOCK_B2"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      197,
+      281,
+      104,
+      90
+     ],
+     "confidence": 0.12
+    },
+    "lidar": {
+     "min_distance_meters": 3.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 18,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "YOLO confidence 0.12 unreliable at 1.4 m/s. Speed-limited navigation.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 10.6,
+        "y": 19.5,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      446,
+      188,
+      134,
+      156
+     ],
+     "confidence": 0.1
+    },
+    "lidar": {
+     "min_distance_meters": 3.3,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 25,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "YOLO confidence 0.1 unreliable at 1.4 m/s. Speed-limited navigation.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 17.8,
+        "y": 11.9,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 11,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=90",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 90C exceeds limit at 0.8 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 18,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 7,
+   "reference": {
+    "decision": "CONTINUE",
+    "reasoning": "Low slip at low speed; safe to continue, logging for maintenance.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_0",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.5,
+     "battery_level_pct": 15,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.45,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.2,
+     "battery_level_pct": 24,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=5.1g",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Impact detected (5.1g). Robot must not move until inspected.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.0,
+     "status": "SENSOR_FAULT"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 6,
+     "active_fault_codes": [
+      "ERR_LIDAR_NAN",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 3,
+   "reference": {
+    "decision": "HALT_AND_REPORT",
+    "reasoning": "LiDAR fault while stationary. Holding position and reporting for diagnostics.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true,
+     "zone_update": "SENSOR_FAULT_HOLD"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.3,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 22,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 7,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "Minor slip detected at 1.4 m/s; speed-limited navigation engaged.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 15.5,
+        "y": 14.9,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_0",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.0,
+     "status": "SENSOR_FAULT"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 11,
+     "active_fault_codes": [
+      "ERR_LIDAR_NAN",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 3,
+   "reference": {
+    "decision": "HALT_AND_REPORT",
+    "reasoning": "LiDAR fault (ERR_LIDAR_NAN) at 1.2 m/s. Obstacle data untrusted, halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true,
+     "zone_update": "SENSOR_FAULT_HOLD"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "cart",
+     "bbox_xywh": [
+      259,
+      284,
+      63,
+      113
+     ],
+     "confidence": 0.65
+    },
+    "lidar": {
+     "min_distance_meters": 0.52,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 67,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "cart at 0.52m inside stopping distance at 1.1 m/s. Halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 5,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 4,
+   "reference": {
+    "decision": "NAVIGATE_TO_CHARGING_DOCK",
+    "reasoning": "Battery critical at 5%. Routing to nearest charging dock via Nav2.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 0.5,
+        "y": 7.7,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_to_dock.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "tote",
+     "bbox_xywh": [
+      309,
+      193,
+      119,
+      143
+     ],
+     "confidence": 0.96
+    },
+    "lidar": {
+     "min_distance_meters": 0.57,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 14,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "DYNAMIC_REROUTE",
+    "reasoning": "Tote blocking lane at 0.57m. Rerouting via Nav2 replanner.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 25.5,
+        "y": 16.6,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_replanning_and_recovery.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false,
+     "zone_update": "ROUTE_MODIFIED_F1"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 14,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.14",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Encoder drift, localization 0.14. Halting to relocalize.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      144,
+      159,
+      112,
+      159
+     ],
+     "confidence": 0.11
+    },
+    "lidar": {
+     "min_distance_meters": 5.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 53,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.0 m/s. Mandatory zero-velocity halt, operator reset required. ERR_CAMERA_DEGRADED deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 19,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.4 m/s. Mandatory zero-velocity halt, operator reset required. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 15,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.3,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 6,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL",
+      "ERR_ENCODER_DRIFT",
+      "localization=0.33"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.33 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 1.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 19,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 7,
+   "reference": {
+    "decision": "CONTINUE",
+    "reasoning": "Minor wheel slip at 0.8 m/s, no obstruction. Continuing, fault logged.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_0",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.0,
+     "status": "SENSOR_FAULT"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 23,
+     "active_fault_codes": [
+      "ERR_LIDAR_NODATA",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 3,
+   "reference": {
+    "decision": "HALT_AND_REPORT",
+    "reasoning": "LiDAR fault (ERR_LIDAR_NODATA) at 0.7 m/s. Obstacle data untrusted, halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true,
+     "zone_update": "SENSOR_FAULT_HOLD"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 8,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_HIGH",
+      "floor=WET",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 8,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_WHEEL_SLIP_HIGH with floor=WET. Emergency halt until floor is cleared.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "WET_FLOOR_ZONE_F5"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      384,
+      200,
+      111,
+      124
+     ],
+     "confidence": 0.2
+    },
+    "lidar": {
+     "min_distance_meters": 1.9,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 7,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 4,
+   "reference": {
+    "decision": "NAVIGATE_TO_CHARGING_DOCK",
+    "reasoning": "Battery 7% below safe margin. Abandoning task, navigating to dock.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 5.9,
+        "y": 3.0,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_to_dock.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false,
+     "zone_update": "RETURNING_TO_DOCK_D3"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 1.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 12,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.7,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.5,
+     "battery_level_pct": 10,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_HIGH",
+      "floor=WET",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 8,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_WHEEL_SLIP_HIGH with floor=WET. Emergency halt until floor is cleared.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "WET_FLOOR_ZONE_B8"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      127,
+      273,
+      60,
+      160
+     ],
+     "confidence": 0.12
+    },
+    "lidar": {
+     "min_distance_meters": 2.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.5,
+     "battery_level_pct": 16,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "REDUCE_SPEED",
+    "reasoning": "YOLO confidence 0.12 unreliable at 1.5 m/s. Speed-limited navigation.",
+    "payload_type": "NAV2_ACTION",
+    "ros2": {
+     "action_server": "/navigate_to_pose",
+     "action_type": "nav2_msgs/action/NavigateToPose",
+     "goal": {
+      "pose": {
+       "header": {
+        "frame_id": "map"
+       },
+       "position": {
+        "x": 4.5,
+        "y": 9.6,
+        "z": 0.0
+       },
+       "orientation": {
+        "w": 1.0
+       }
+      },
+      "behavior_tree": "navigate_w_speed_limit.xml"
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 7.4,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 25,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_HIGH",
+      "floor=WET",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 8,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_WHEEL_SLIP_HIGH with floor=WET. Emergency halt until floor is cleared.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "WET_FLOOR_ZONE_G9"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 23,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.14",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.14 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 7,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.18",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Encoder drift, localization 0.18. Halting to relocalize.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.4,
+     "battery_level_pct": 62,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.29",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.29 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 5.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 6,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_HIGH",
+      "floor=WET",
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 8,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "High wheel slip on wet floor at 1.2 m/s. Halting to avoid uncontrolled skid.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "WET_FLOOR_ZONE_F1"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.24,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 16,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=4.4g",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Impact detected (4.4g). Robot must not move until inspected.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      329,
+      276,
+      116,
+      108
+     ],
+     "confidence": 0.26
+    },
+    "lidar": {
+     "min_distance_meters": 1.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.8,
+     "battery_level_pct": 62,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "ERR_ESTOP_TRIGGERED active. Halting immediately; no auto-recovery. ERR_CAMERA_DEGRADED deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 6.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.0,
+     "battery_level_pct": 19,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW",
+      "ERR_ENCODER_DRIFT",
+      "localization=0.19"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Encoder drift at rest (loc 0.19). Relocalizing before motion.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 1.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.5,
+     "battery_level_pct": 92,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_L",
+      "temp_c=95",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Motor at 95C exceeds limit at 1.5 m/s. Halting to prevent damage.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "box",
+     "bbox_xywh": [
+      280,
+      257,
+      104,
+      146
+     ],
+     "confidence": 0.69
+    },
+    "lidar": {
+     "min_distance_meters": 0.49,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 67,
+     "active_fault_codes": [
+      "ERR_MOTOR_OVERHEAT_R",
+      "temp_c=86"
+     ]
+    }
+   },
+   "category_id": 6,
+   "reference": {
+    "decision": "THERMAL_COOLDOWN",
+    "reasoning": "Mild overheat (86C); cooldown cycle requested, fault logged.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "unknown",
+     "bbox_xywh": [
+      411,
+      166,
+      95,
+      137
+     ],
+     "confidence": 0.15
+    },
+    "lidar": {
+     "min_distance_meters": 6.5,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.0,
+     "battery_level_pct": 20,
+     "active_fault_codes": [
+      "ERR_CAMERA_DEGRADED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 12,
+   "reference": {
+    "decision": "LIDAR_ONLY_MODE",
+    "reasoning": "Camera degraded (conf 0.15). Switching to LiDAR-only mode, fault logged.",
+    "payload_type": "FAULT_REPORT_ONLY",
+    "ros2": null,
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 3.1,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 73,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.3 m/s. Mandatory zero-velocity halt, operator reset required. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      474,
+      240,
+      82,
+      180
+     ],
+     "confidence": 0.85
+    },
+    "lidar": {
+     "min_distance_meters": 1.79,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 22,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (forklift) in path at 1.79m. Emergency halt, no auto-recovery. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "damaged_pallet",
+     "bbox_xywh": [
+      443,
+      230,
+      131,
+      145
+     ],
+     "confidence": 0.96
+    },
+    "lidar": {
+     "min_distance_meters": 0.31,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 23,
+     "active_fault_codes": [
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 1,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "damaged_pallet at 0.31m inside stopping distance at 0.7 m/s. Halting.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_2",
+     "request_human_audit": false,
+     "zone_update": "TEMPORARY_BLOCKAGE_ZONE_C2"
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      366,
+      243,
+      103,
+      177
+     ],
+     "confidence": 0.82
+    },
+    "lidar": {
+     "min_distance_meters": 1.45,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.7,
+     "battery_level_pct": 7,
+     "active_fault_codes": [
+      "ERR_BATTERY_CRITICAL"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Human-class object (forklift) in path at 1.45m. Emergency halt, no auto-recovery. ERR_BATTERY_CRITICAL deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 0.47,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.2,
+     "battery_level_pct": 22,
+     "active_fault_codes": [
+      "ERR_COLLISION_DETECTED",
+      "imu_spike=3.7g",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 11,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Collision with 3.7g IMU spike. Halting and requesting damage audit.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.0,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.2,
+     "battery_level_pct": 69,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW",
+      "ERR_ESTOP_TRIGGERED"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 1.2 m/s. Mandatory zero-velocity halt, operator reset required. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 4.8,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.3,
+     "battery_level_pct": 20,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.32",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.32 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.2,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.6,
+     "battery_level_pct": 21,
+     "active_fault_codes": [
+      "ERR_ESTOP_TRIGGERED",
+      "ERR_BATTERY_LOW"
+     ]
+    }
+   },
+   "category_id": 10,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "E-stop triggered at 0.6 m/s. Mandatory zero-velocity halt, operator reset required. ERR_BATTERY_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": {
+     "cls": "forklift",
+     "bbox_xywh": [
+      184,
+      217,
+      114,
+      172
+     ],
+     "confidence": 0.96
+    },
+    "lidar": {
+     "min_distance_meters": 0.56,
+     "status": "PATH_OBSTRUCTED"
+    },
+    "telemetry": {
+     "current_speed_mps": 0.9,
+     "battery_level_pct": 83,
+     "active_fault_codes": [
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 2,
+   "reference": {
+    "decision": "EMERGENCY_HALT",
+    "reasoning": "Forklift detected at 0.96 confidence, 0.56m ahead. Mandatory halt. ERR_WHEEL_SLIP_LOW deferred until area is safe.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_3",
+     "request_human_audit": true
+    }
+   }
+  },
+  {
+   "scenario": {
+    "yolo": null,
+    "lidar": {
+     "min_distance_meters": 2.6,
+     "status": "CLEAR"
+    },
+    "telemetry": {
+     "current_speed_mps": 1.1,
+     "battery_level_pct": 73,
+     "active_fault_codes": [
+      "ERR_ENCODER_DRIFT",
+      "localization=0.23",
+      "ERR_WHEEL_SLIP_LOW"
+     ]
+    }
+   },
+   "category_id": 9,
+   "reference": {
+    "decision": "HALT_AND_RELOCALIZE",
+    "reasoning": "Localization confidence 0.23 below 0.4. Stopping and relocalizing.",
+    "payload_type": "CMD_VEL_DIRECT",
+    "ros2": {
+     "topic": "/cmd_vel",
+     "msg_type": "geometry_msgs/msg/Twist",
+     "cmd_vel": {
+      "linear": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      },
+      "angular": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     }
+    },
+    "aws_telemetry": {
+     "incident_severity": "LEVEL_1",
+     "request_human_audit": false
+    }
+   }
+  }
+ ]
+}
